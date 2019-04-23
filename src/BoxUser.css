@@ -1,20 +1,16 @@
-.App {
-  display: flex;
-  flex: 1;
-}
-
 .boxUser {
   flex-direction: column;
   justify-content: center;
   align-items: center;
   margin: 10px;
-  width: 250px;
+  width: 150px;
   height: 350px;
   border-radius: 10px;
   padding: 10px;
   border: 1px solid;
 }
 
-h1 {
-  color: #fff;
+img {
+  width: 140px;
+  height: 150px;
 }
