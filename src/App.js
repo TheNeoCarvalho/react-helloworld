@@ -1,39 +1,26 @@
-import React, { Component } from "react"; //jsx
-import BoxUser from "./BoxUser";
+import React, { Component } from "react";
 import "./App.css";
-//stateful components
+import Counter from "./components/Counter/Counter";
+import Botao from "./components/Botao/Botao";
 class App extends Component {
   state = {
-    pessoas: [
-      {
-        id: 1,
-        nome: "Manolo",
-        email: "manolo@gmail.com",
-        img: "user.png"
-      },
-      {
-        id: 2,
-        nome: "Maria",
-        email: "maria@gmail.com",
-        img: "user.png"
-      },
-      {
-        id: 3,
-        nome: "Valéria",
-        email: "valeria@gmail.com",
-        img: "user.png"
-      }
-    ]
+    count: 0
   };
-
+  handleIncrement = () => {
+    this.setState({ count: this.state.count + 1 });
+  };
+  handleDecrement = () => {
+    if (!(this.state.count < 1)) {
+      this.setState({ count: this.state.count - 1 });
+    }
+  };
   render() {
     return (
       <div className="App">
-        {this.state.pessoas.map(pessoa => {
-          return (
-            <BoxUser img={pessoa.img} nome={pessoa.nome} email={pessoa.email} />
-          );
-        })}
+        <h1>{this.state.app}</h1>
+        <Botao onClick={this.handleDecrement} texto="-" />
+        <Counter contador={this.state.count} />
+        <Botao onClick={this.handleIncrement} texto="+" />
       </div>
     );
   }
