@@ -1,0 +1,92 @@
+import React, { Component } from "react";
+import "./App.css";
+
+import Lista from "./components/Lista/Lista";
+
+//state - onClick - condicional
+class App extends Component {
+  // state = {
+  //   status: true
+  // };
+
+  // alternar = () => {
+  //   this.setState({ status: !this.state.status });
+  // };
+
+  // render() {
+  //   return (
+  //     <div className="App">
+  //       <h1>{this.state.status ? "Habilitado" : "Desabilitado"}</h1>
+  //       <button className="btn btn-primary" onClick={this.alternar}>
+  //         {this.state.status ? "Desabilitar" : "Habilitar"}
+  //       </button>
+  //     </div>
+  //   );
+  // }
+
+  // state = {
+  //   conta: 10
+  // };
+
+  // start = () => {
+  //   setInterval(() => {
+  //     if (this.state.conta > 0) {
+  //       this.setState({ conta: this.state.conta - 1 });
+  //     } else {
+  //       this.setState({ conta: "Acabou!!" });
+  //     }
+  //   }, 1000);
+  // };
+
+  // render() {
+  //   return (
+  //     <div className="App">
+  //       <h1>{this.state.conta}</h1>
+  //       <button className="btn btn-primary" onClick={this.start}>
+  //         Start
+  //       </button>
+  //     </div>
+  //   );
+  // }
+
+  state = {
+    nomes: []
+  };
+
+  handleAdd = () => {
+    let n = this.state.nomes;
+    n.push("Neo");
+    this.setState({ nomes: n });
+  };
+
+  render() {
+    return (
+      <div className="App">
+        <Lista nome={this.state.nomes} />
+
+        <button className="btn btn-primary" onClick={this.handleAdd}>
+          Adicionar nome
+        </button>
+      </div>
+    );
+  }
+}
+
+export default App;
+
+
+
+
+import React from "react";
+
+const Lista = props => {
+  return (
+    <ul>
+      {props.nome.map((n, key) => {
+        return <li key={key}>{n}</li>;
+      })}
+    </ul>
+  );
+};
+
+export default Lista;

@@ -1,13 +1,11 @@
 .App {
   display: flex;
+  flex-direction: column;
   flex: 1;
   justify-content: center;
   align-items: center;
 }
-h1 {
-  color: #000;
-}
 
-button {
-  width: 250px;
+.text-input {
+  flex: 1;
 }

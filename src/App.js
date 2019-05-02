@@ -1,26 +1,42 @@
 import React, { Component } from "react";
 import "./App.css";
-import Counter from "./components/Counter/Counter";
-import Botao from "./components/Botao/Botao";
+
+import Lista from "./components/Lista/Lista";
+
 class App extends Component {
   state = {
-    count: 0
+    nomes: [],
+    nome: ""
   };
-  handleIncrement = () => {
-    this.setState({ count: this.state.count + 1 });
+
+  handleAdd = n => {
+    let nome = this.state.nomes;
+    nome.push(n);
+    this.setState({ nomes: nome });
   };
-  handleDecrement = () => {
-    if (!(this.state.count < 1)) {
-      this.setState({ count: this.state.count - 1 });
-    }
+
+  handleChange = n => {
+    this.setState({ nome: n.target.value });
   };
+
   render() {
     return (
       <div className="App">
-        <h1>{this.state.app}</h1>
-        <Botao onClick={this.handleDecrement} texto="-" />
-        <Counter contador={this.state.count} />
-        <Botao onClick={this.handleIncrement} texto="+" />
+        <input
+          className="text-input"
+          type="text"
+          name="nome"
+          onChange={this.handleChange}
+        />
+        <button
+          className="btn btn-primary"
+          onClick={() => {
+            this.handleAdd(this.state.nome);
+          }}
+        >
+          Adicionar nome
+        </button>
+        <Lista nome={this.state.nomes} />
       </div>
     );
   }
