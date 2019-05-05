@@ -1,42 +1,37 @@
 import React, { Component } from "react";
 import "./App.css";
 
-import Lista from "./components/Lista/Lista";
-
 class App extends Component {
   state = {
-    nomes: [],
-    nome: ""
+    valor: 0,
+    cotacao: 3.97,
+    valorConvertido: 0
   };
 
-  handleAdd = n => {
-    let nome = this.state.nomes;
-    nome.push(n);
-    this.setState({ nomes: nome });
-  };
+  handleClick = () => {};
 
-  handleChange = n => {
-    this.setState({ nome: n.target.value });
+  handleChange = event => {
+    this.setState({ valor: event.target.value });
   };
 
   render() {
     return (
       <div className="App">
-        <input
-          className="text-input"
-          type="text"
-          name="nome"
-          onChange={this.handleChange}
-        />
-        <button
-          className="btn btn-primary"
-          onClick={() => {
-            this.handleAdd(this.state.nome);
-          }}
-        >
-          Adicionar nome
+        <h1>Conversor de Moedas</h1>
+        <input className="btn" onChange={this.handleChange} />
+        <button className="btn btn-danger" onClick={this.onClick}>
+          Converter
         </button>
-        <Lista nome={this.state.nomes} />
+        <h6>
+          {this.state.valor === 0
+            ? `Informe um valor`
+            : `$ ${this.state.valor} com a cotação R$ 3,97 são R$ ${(
+                this.state.valor * this.state.cotacao
+              ).toLocaleString("pt-br", {
+                style: "currency",
+                currency: "BRL"
+              })} reais`}
+        </h6>
       </div>
     );
   }

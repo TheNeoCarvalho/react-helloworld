@@ -6,6 +6,7 @@
   align-items: center;
 }
 
-.text-input {
-  flex: 1;
+.btn {
+  margin: 10px 0;
+  border: 1px solid red;
 }
