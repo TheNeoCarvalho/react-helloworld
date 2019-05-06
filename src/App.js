@@ -1,17 +1,24 @@
 import React, { Component } from "react";
+import axios from "axios";
+
 import "./App.css";
 
 class App extends Component {
   state = {
     valor: 0,
-    cotacao: 3.97,
-    valorConvertido: 0
+    cotacao: 0
   };
 
-  handleClick = () => {};
+  componentDidMount() {
+    axios.get("https://economia.awesomeapi.com.br/json/USD").then(data => {
+      let cotacao = data.data[0].ask;
+      this.setState({ cotacao });
+    });
+  }
 
   handleChange = event => {
-    this.setState({ valor: event.target.value });
+    let valor = event.target.value;
+    this.setState({ valor });
   };
 
   render() {
@@ -19,18 +26,13 @@ class App extends Component {
       <div className="App">
         <h1>Conversor de Moedas</h1>
         <input className="btn" onChange={this.handleChange} />
-        <button className="btn btn-danger" onClick={this.onClick}>
-          Converter
-        </button>
+        <h6>{`$: ${this.state.valor}`}</h6>
+        <h6>{`Cotacão: ${this.state.cotacao}`}</h6>
         <h6>
-          {this.state.valor === 0
-            ? `Informe um valor`
-            : `$ ${this.state.valor} com a cotação R$ 3,97 são R$ ${(
-                this.state.valor * this.state.cotacao
-              ).toLocaleString("pt-br", {
-                style: "currency",
-                currency: "BRL"
-              })} reais`}
+          {`${(this.state.cotacao * this.state.valor).toLocaleString("pt-br", {
+            style: "currency",
+            currency: "BRL"
+          })}`}
         </h6>
       </div>
     );
