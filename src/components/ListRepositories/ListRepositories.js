@@ -3,9 +3,9 @@ import moment from "moment";
 import "./ListRepositories.css";
 
 const ListRepositories = ({ repositories }) => (
-  <div>
+  <div className="repo">
     {repositories.map(repository => (
-      <div className="app" key={repository.id}>
+      <div className="app">
         <div className="Head">
           <img
             className="avatar"
@@ -32,6 +32,9 @@ const ListRepositories = ({ repositories }) => (
           </ul>
         </div>
         <div className="Footer">
+          <a href="#">
+            <i className="fas fa-star" />
+          </a>
           <a
             href={repository.html_url}
             target="_blank"

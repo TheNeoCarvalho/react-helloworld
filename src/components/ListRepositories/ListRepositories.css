@@ -1,9 +1,17 @@
 .app {
-  width: 220px;
+  width: 230px;
   height: 400px;
   background-color: #fff;
   border-radius: 5px;
   box-shadow: 2px 2px 3px #333;
+  margin: 10px;
+}
+.repo {
+  display: flex;
+  flex-direction: row;
+  justify-content: center;
+  align-items: center;
+  flex-wrap: wrap;
 }
 
 .Head {
@@ -27,7 +35,7 @@ ul li {
 
 span {
   font: 12px Arial;
-  color: rgb(144, 138, 138);
+  color: rgb(128, 128, 128);
 }
 
 .avatar {

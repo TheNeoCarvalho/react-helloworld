@@ -69,11 +69,7 @@ class App extends Component {
           </div>
         </form>
 
-        <ListRepositories
-          repositories={this.state.repositories}
-          owner={this.state.owner}
-          onClick={this.handleFav}
-        />
+        <ListRepositories repositories={this.state.repositories} />
       </div>
     );
   }

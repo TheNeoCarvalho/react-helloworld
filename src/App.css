@@ -1,12 +1,11 @@
 body {
   background: #eee;
 }
-.App {
+
+.lista {
   display: flex;
-  flex: 1;
+  flex: 4;
   flex-direction: row;
-  justify-content: center;
-  align-items: center;
 }
 
 .btn {
