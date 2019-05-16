@@ -5,15 +5,43 @@ import "./ListRepositories.css";
 const ListRepositories = props => {
   return (
     <div className="app">
-      <img src={props.owner.avatar_url} />
-      <h3>{props.repositories.name}</h3>
-      <h5>react</h5>
-      <ul>
-        <li>{props.repositories.stargazers_count} star</li>
-        <li>{props.repositories.forks_count} fork</li>
-        <li>{props.repositories.open_issues} issues</li>
-        <li> {moment(props.repositories.pushed_at).fromNow()}last commit</li>
-      </ul>
+      <div className="Head">
+        <img className="avatar" src={props.owner.avatar_url} width="25" />
+        <h3>{props.repositories.name}</h3>
+        <h5>{props.owner.login}</h5>
+      </div>
+      <div className="Body">
+        <ul>
+          <li>
+            {props.repositories.stargazers_count} <span>star</span>
+          </li>
+          <li>
+            {props.repositories.forks_count} <span>fork</span>
+          </li>
+          <li>
+            {props.repositories.open_issues} <span>issues</span>
+          </li>
+          <li>
+            {" "}
+            {moment(props.repositories.pushed_at).fromNow()}
+            <span> last commit</span>
+          </li>
+        </ul>
+      </div>
+      <div className="Footer">
+        <img
+          onClick={props.onClick}
+          width="20"
+          src="https://images.vexels.com/media/users/3/136916/isolated/preview/aa21eb60437133bf4f4be189636a187a-star-favorite-outline-icon-by-vexels.png"
+        />
+        <a
+          href={props.repositories.html_url}
+          target="_blank"
+          className="btn btn-default"
+        >
+          ver no github <i class="fab fa-github" />
+        </a>
+      </div>
     </div>
   );
 };
