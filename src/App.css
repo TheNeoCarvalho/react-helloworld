@@ -3,8 +3,16 @@ body {
 }
 .App {
   display: flex;
-  flex-direction: column;
   flex: 1;
+  flex-direction: row;
   justify-content: center;
   align-items: center;
+}
+
+.btn {
+  border: 1px solid #555;
+}
+
+.btn:hover {
+  border: 1px solid #999;
 }
